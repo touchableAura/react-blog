@@ -1,16 +1,30 @@
-
 import './App.css';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom'; 
+
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import ArticlesListPage from './pages/ArticlesListPage';
+import ArticlePage from './pages/ArticlePage';
+import NavBar from './NavBar';
+// import NotFoundPage from './pages/NotFoundPage';
+
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <div className="App">
-        <h1>Evan's Online Blog</h1>
+        <NavBar />
       </div>
       <div id="page-body">
-        <p>welcome to my blog</p>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element ={<AboutPage />} />
+          <Route path ="/articles" element ={<ArticlesListPage />} /> 
+          <Route path ="/articles/:articleId" element={<ArticlePage />} />
+        </Routes>
       </div>
-    </>
+    </BrowserRouter>
   );
 }
 
